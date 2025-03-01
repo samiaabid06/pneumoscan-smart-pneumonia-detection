@@ -1,0 +1,222 @@
+.text {
+    position: absolute;
+    top: 114px;
+    left: -17px;
+    line-height: 141.67%;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 262px;
+    height: 20px;
+}
+.container-13-child {
+    position: absolute;
+    top: 66px;
+    left: 47px;
+    background-color: #8062b2;
+    width: 301px;
+    height: 36px;
+}
+.text1 {
+    position: absolute;
+    top: 71px;
+    left: -32px;
+    font-size: 18px;
+    line-height: 141.67%;
+    display: inline-block;
+    color: #c5badd;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 276px;
+    height: 25px;
+}
+.eye-regular-1-icon {
+    position: absolute;
+    top: 71px;
+    left: 305px;
+    width: 27px;
+    height: 26px;
+    overflow: hidden;
+}
+.text2 {
+    position: absolute;
+    top: 17px;
+    left: 51px;
+    line-height: 120%;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 98px;
+    height: 28px;
+}
+.button-2 {
+    position: absolute;
+    top: 197px;
+    left: 97px;
+    border-radius: 6px;
+    background-color: #fefefe;
+    width: 200px;
+    height: 61px;
+    font-size: 32px;
+    color: #a29fac;
+}
+.container-13 {
+    position: absolute;
+    top: 231px;
+    left: 82px;
+    width: 390px;
+    height: 227px;
+    color: #6dadff;
+}
+.imagetextblock-child {
+    position: absolute;
+    top: 195px;
+    left: 127px;
+    background-color: #8062b2;
+    width: 301px;
+    height: 36px;
+}
+.text3 {
+    position: absolute;
+    top: 200px;
+    left: 111px;
+    font-size: 18px;
+    line-height: 141.67%;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 276px;
+    height: 25px;
+}
+.sign-up {
+    color: #6dadff;
+}
+.text4 {
+    position: absolute;
+    top: 508px;
+    left: 146px;
+    font-size: 20px;
+    line-height: 141.67%;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 262px;
+    height: 20px;
+}
+.imagetextblock {
+    position: absolute;
+    top: -14px;
+    left: 328px;
+    border-radius: 11px;
+    background-color: #593c8a;
+    width: 555px;
+    height: 723px;
+}
+.container-11 {
+    position: absolute;
+    top: 210px;
+    left: 0px;
+    width: 1210px;
+    height: 684px;
+}
+.heading-3 {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    line-height: 120%;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 1210px;
+    height: 72px;
+}
+.container-10 {
+    position: absolute;
+    top: 49px;
+    left: 0px;
+    width: 1210px;
+    height: 147px;
+    font-size: 60px;
+    color: #fefefd;
+    font-family: 'Playfair Display SC';
+}
+.section-3 {
+    position: absolute;
+    top: 96px;
+    left: 115px;
+    width: 1210px;
+    height: 797px;
+}
+.bolt-solid-2-1 {
+    width: 48px;
+    position: relative;
+    height: 48px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.logotext {
+    position: relative;
+    line-height: 100%;
+}
+.logoitem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
+}
+.navbutton {
+    border-radius: 10px;
+    background-color: #fefefe;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 20px;
+    box-sizing: border-box;
+    text-align: center;
+    color: #c49ebd;
+    font-family: Inter;
+}
+.itemgroup {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 30px;
+    font-size: 16px;
+    color: #a4acba;
+    font-family: 'Courier Prime';
+}
+.nav {
+    position: absolute;
+    width: 100%;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 100px;
+    box-sizing: border-box;
+    text-align: left;
+    font-size: 24px;
+    color: #fff;
+    font-family: Outfit;
+}
+.login-page {
+    width: 100%;
+    position: relative;
+    background-color: #0d1125;
+    height: 1108px;
+    text-align: center;
+    font-size: 14px;
+    color: #c5badd;
+    font-family: 'Courier Prime';
+}
+
