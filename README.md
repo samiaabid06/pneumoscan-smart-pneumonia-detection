@@ -1,4 +1,4 @@
-````
+
 # 🫁 PneumoScan-Smart-Pneumonia-Detection
 
 A deep learning–based web application for automated detection of **Pneumonia** from chest X-ray images.  
@@ -117,10 +117,6 @@ python train.py
 
 **Samia Abid**
 [https://github.com/samiaabid06](https://github.com/samiaabid06)
-
-```
-
----
 
 
 
