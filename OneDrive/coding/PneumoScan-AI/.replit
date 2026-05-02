@@ -1,0 +1,36 @@
+# Replit Configuration
+# https://docs.replit.com/getting-started/configuring-replit
+
+# Primary run command
+run = "python app_prod.py"
+
+# Entrypoint file for language detection
+entrypoint = "app_prod.py"
+
+# Interpreter settings
+[interpreter]
+language = "python3"
+command = [
+  "python3",
+  "-u",
+  "-q",
+  "-i"
+]
+
+# Environment for the repl
+[env]
+PYTHONUNBUFFERED = "1"
+FLASK_ENV = "production"
+FLASK_DEBUG = "False"
+
+# Replit database config (optional)
+[modules]
+python-packages = []
+
+# Port configuration - Replit uses port 5000 by default
+[ports]
+port = 5000
+
+# Resource limits - Replit free tier
+[nix]
+channel = "stable-22_05"

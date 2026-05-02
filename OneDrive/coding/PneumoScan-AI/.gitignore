@@ -1,0 +1,65 @@
+# .gitignore - Exclude sensitive/temporary files from GitHub
+
+# Environment Variables (NEVER commit secrets!)
+.env
+.env.local
+.env.*.local
+
+# Virtual Environment
+.venv/
+venv/
+env/
+ENV/
+.Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Database Files
+*.db
+*.sqlite
+*.sqlite3
+pneumoscan.db*
+
+# Logs
+logs/
+*.log
+
+# Uploads
+uploads/
+temp/
+tmp/
+
+# IDE Settings
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Package Installers
+dist/
+build/
+*.egg-info/
+.eggs/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# OS Specific
+Thumbs.db
+.Thumbs.db
+
+# Node (if used)
+node_modules/
+package-lock.json
+
+# Replit cache
+.replit-cache/
+
+# Cache directories
+.cache/
+__pycache__/

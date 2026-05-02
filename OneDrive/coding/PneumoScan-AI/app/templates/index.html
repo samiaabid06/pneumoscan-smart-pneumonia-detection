@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PneumoScan AI — Medical Imaging Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+  <!-- Background FX -->
+  <div class="bg-grid"></div>
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+  <div class="bg-orb orb-3"></div>
+
+  <div class="layout">
+
+    <!-- ======================== SIDEBAR ======================== -->
+    <aside class="sidebar">
+      <div class="logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-name">PneumoScan</span>
+          <span class="logo-badge">AI</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <button class="nav-item active" data-panel="scan">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="3"/>
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M3 9h18M3 15h18M9 3v18M15 3v18" opacity="0.4"/>
+            </svg>
+          </span>
+          <span>Scan</span>
+        </button>
+        <button class="nav-item" data-panel="metrics">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+            </svg>
+          </span>
+          <span>Metrics</span>
+        </button>
+        <button class="nav-item" data-panel="chat">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+          </span>
+          <span>AI Chat</span>
+        </button>
+        <button class="nav-item" data-panel="history">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </span>
+          <span>History</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="status-indicator">
+          <div class="pulse-dot"></div>
+          <span>Model Online</span>
+        </div>
+        <button class="theme-toggle" id="themeToggle" title="Toggle theme">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+          <span class="theme-label"></span>
+        </button>
+        <p class="disclaimer">For research &amp; educational use only. Not a substitute for professional medical diagnosis.</p>
+      </div>
+    </aside>
+
+    <!-- ======================== MAIN ======================== -->
+    <main class="main-content">
+
+      <!-- ===== SCAN PANEL ===== -->
+      <section class="panel active" id="panel-scan">
+        <div class="panel-header">
+          <div>
+            <div class="panel-eyebrow">// radiology ai</div>
+            <h1 class="panel-title">X-Ray Analysis <em>Studio</em></h1>
+            <p class="panel-sub">Upload a chest X-ray to detect pneumonia indicators with AI-assisted precision imaging.</p>
+          </div>
+          <div class="header-badges">
+            <span class="header-tag">CNN v2.4</span>
+          </div>
+        </div>
+
+        <!-- Patient Info Card -->
+        <div class="card patient-card">
+          <div class="card-header-row">
+            <span class="card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              Patient Information
+            </span>
+            <span class="required-note">All fields optional</span>
+          </div>
+          <div class="patient-form">
+            <div class="form-group">
+              <label for="patientId" class="form-label">Patient ID</label>
+              <span class="optional-tag">optional</span>
+              <input class="form-input" type="text" placeholder="e.g. PT-2024-001" id="patientId" />
+            </div>
+            <div class="form-group">
+              <label for="patientName" class="form-label">Full Name</label>
+              <input class="form-input" type="text" placeholder="Patient name" id="patientName" required />
+            </div>
+            <div class="form-group">
+              <label for="patientAge" class="form-label">Age</label>
+              <input class="form-input" type="number" placeholder="e.g. 45" id="patientAge" min="0" max="120" required />
+            </div>
+            <div class="form-group">
+              <label for="patientSex" class="form-label">Sex</label>
+              <select class="form-input form-select" id="patientSex" title="Select patient sex" required>
+                <option value="">Select</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="scan-layout">
+
+          <!-- Upload Card -->
+          <div class="card upload-card">
+            <div class="card-header-row">
+              <span class="card-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                Upload X-Ray
+              </span>
+            </div>
+
+            <!-- Upload Zone -->
+            <div class="upload-zone" id="uploadZone">
+              <input type="file" class="file-input" id="fileInput" accept="image/*" title="Upload X-ray image" />
+              <div class="upload-visual">
+                <div class="upload-ring">
+                  <div class="upload-ring-inner">
+                    <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/>
+                      <path d="M12 12v9"/><path d="m16 16-4-4-4 4"/>
+                    </svg>
+                  </div>
+                </div>
+                <span class="upload-label">Drop X-Ray here or <span class="upload-link">browse file</span></span>
+                <span class="upload-hint">Chest radiograph (PA/AP view recommended)</span>
+                <div class="upload-formats-row">
+                  <span class="format-pill">PNG</span>
+                  <span class="format-pill">JPG</span>
+                  <span class="format-pill">JPEG</span>
+                  <span class="format-pill">WEBP</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Preview (hidden by default) -->
+            <div class="preview-wrap hidden" id="previewWrap">
+              <div class="preview-frame">
+                <img src="" alt="X-Ray Preview" class="preview-img" id="previewImg" />
+                <div class="preview-overlay">
+                  <div class="scan-grid-overlay"></div>
+                </div>
+              </div>
+              <div class="preview-meta">
+                <div class="preview-meta-left">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span class="file-name" id="fileName">image.png</span>
+                </div>
+                <button class="clear-btn" id="clearBtn">Remove</button>
+              </div>
+            </div>
+
+            <!-- Analyze Button -->
+            <button class="predict-btn" id="analyzeBtn" disabled>
+              <div class="predict-btn-content">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                Analyze X-Ray with AI
+              </div>
+              <span class="btn-arrow">→</span>
+            </button>
+
+            <p class="disclaimer">Results are AI-assisted estimations only. Always consult a licensed radiologist for clinical decisions.</p>
+          </div>
+
+          <!-- Result Card -->
+          <div class="card result-card" id="resultCard">
+            <div class="card-header-row">
+              <span class="card-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg>
+                Diagnostic Report
+              </span>
+              <span class="chart-period-tag" id="resultTimestamp">—</span>
+            </div>
+
+            <!-- IDLE STATE -->
+            <div class="result-idle" id="stateIdle">
+              <div class="idle-graphic">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M8 2v4M16 2v4M3 10h18M3 6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6z" opacity="0.5"/>
+                  <path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"/>
+                </svg>
+              </div>
+              <p class="idle-text">No scan analyzed yet</p>
+              <p class="idle-sub">Upload a chest X-ray and click Analyze to receive an AI-powered diagnostic report.</p>
+              <div class="idle-chips">
+                <span class="idle-chip">92% Accuracy</span>
+                <span class="idle-chip">CNN Model</span>
+                <span class="idle-chip">Real-time</span>
+              </div>
+            </div>
+
+            <!-- LOADING STATE -->
+            <div class="result-loading hidden" id="stateLoading">
+              <div class="scan-frame">
+                <div class="scan-bars">
+                  <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                  <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                </div>
+                <div class="scan-line"></div>
+                <div class="scan-crosshair"></div>
+              </div>
+              <p class="loading-text">Analyzing radiograph…</p>
+              <div class="loading-steps">
+                <div class="step-item" id="step1"><div class="step-dot"></div><span>Preprocess</span></div>
+                <div class="step-connector"></div>
+                <div class="step-item" id="step2"><div class="step-dot"></div><span>Inference</span></div>
+                <div class="step-connector"></div>
+                <div class="step-item" id="step3"><div class="step-dot"></div><span>Classify</span></div>
+              </div>
+            </div>
+
+            <!-- RESULT STATE -->
+            <div class="result-output hidden" id="stateResult">
+
+              <div class="result-badge-wrap">
+                <div class="result-badge" id="resultBadge">
+                  <div class="badge-icon-wrap" id="badgeIcon">🫁</div>
+                  <div class="badge-text-wrap">
+                    <div class="badge-label" id="badgeLabel">—</div>
+                    <div class="badge-sublabel">AI Diagnosis</div>
+                  </div>
+                </div>
+                <div class="risk-meter">
+                  <div class="risk-label">Risk</div>
+                  <div class="risk-value" id="riskValue">—</div>
+                </div>
+              </div>
+
+              <div class="confidence-section">
+                <div class="conf-header">
+                  <span class="conf-label">Confidence Score</span>
+                  <span class="conf-value" id="confValue">0%</span>
+                </div>
+                <div class="conf-track">
+                  <div class="conf-fill" id="confFill"></div>
+                </div>
+                <div class="conf-ticks">
+                  <span>0%</span><span>25%</span><span>50%</span><span>75%</span><span>100%</span>
+                </div>
+              </div>
+
+              <div class="mini-charts-row">
+                <div class="mini-chart-wrap">
+                  <canvas id="barChart"></canvas>
+                  <div class="mini-chart-label">Distribution</div>
+                </div>
+                <div class="mini-chart-wrap">
+                  <canvas id="pieChart"></canvas>
+                  <div class="mini-chart-label">Probability Split</div>
+                </div>
+              </div>
+
+              <div class="ai-interpretation">
+                <div class="interp-header">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/><path d="M12 16v-4M12 8h.01"/></svg>
+                  AI Interpretation
+                </div>
+                <p class="interp-text" id="interpText">—</p>
+              </div>
+
+              <div class="result-meta">
+                <div class="meta-item">
+                  <span class="meta-key">model</span>
+                  <span class="meta-val">pneumonia_cnn_v2.4</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-key">inference</span>
+                  <span class="meta-val meta-ok"><span class="status-dot-inline"></span> <span id="inferenceTime">—</span></span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-key">input_res</span>
+                  <span class="meta-val">64×64 px (normalized)</span>
+                </div>
+              </div>
+
+              <button class="download-btn" id="downloadBtn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Export Diagnostic Report
+              </button>
+
+              <div class="result-notice">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                This is a research tool only. Results should not be used as the sole basis for medical decisions. Always consult a qualified healthcare professional.
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ===== METRICS PANEL ===== -->
+      <section class="panel" id="panel-metrics">
+        <div class="panel-header">
+          <div>
+            <div class="panel-eyebrow">// model performance</div>
+            <h1 class="panel-title">Model <em>Analytics</em></h1>
+            <p class="panel-sub">Live performance metrics and evaluation statistics for the deployed pneumonia detection model.</p>
+          </div>
+          <div class="header-badges">
+            <button class="header-btn" id="refreshMetrics">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+              Refresh
+            </button>
+          </div>
+        </div>
+
+        <div class="metrics-grid" id="metricsGrid">
+          <div class="metric-card">
+            <div class="metric-icon metric-blue">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <div class="metric-label">Accuracy</div>
+            <div class="metric-val" id="metricAccuracy">—</div>
+            <div class="metric-bar-wrap"><div class="metric-bar metric-bar-blue" id="barAccuracy"></div></div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon metric-green">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 8 12 12 14 14"/></svg>
+            </div>
+            <div class="metric-label">Precision</div>
+            <div class="metric-val" id="metricPrecision">—</div>
+            <div class="metric-bar-wrap"><div class="metric-bar metric-bar-green" id="barPrecision"></div></div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon metric-amber">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <div class="metric-label">Recall</div>
+            <div class="metric-val" id="metricRecall">—</div>
+            <div class="metric-bar-wrap"><div class="metric-bar metric-bar-amber" id="barRecall"></div></div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon metric-primary">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <div class="metric-label">F1 Score</div>
+            <div class="metric-val" id="metricF1">—</div>
+            <div class="metric-bar-wrap"><div class="metric-bar metric-bar-primary" id="barF1"></div></div>
+          </div>
+        </div>
+
+        <!-- Charts -->
+        <div class="card chart-card">
+          <div class="card-header-row">
+            <span class="card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="18" y="3" width="4" height="18"/><rect x="10" y="8" width="4" height="13"/><rect x="2" y="13" width="4" height="8"/></svg>
+              Performance Overview
+            </span>
+            <span class="chart-period-tag">Current Epoch</span>
+          </div>
+          <div class="chart-wrap">
+            <canvas id="metricsBarChart"></canvas>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header-row">
+            <span class="card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+              Confusion Matrix
+            </span>
+          </div>
+          <div class="cm-canvas-container">
+            <canvas id="confusionMatrixCanvas"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== CHAT PANEL ===== -->
+      <section class="panel" id="panel-chat">
+        <div class="panel-header">
+          <div>
+            <div class="panel-eyebrow">// medical ai assistant</div>
+            <h1 class="panel-title">AI <em>Assistant</em></h1>
+            <p class="panel-sub">Ask questions about pneumonia, your scan results, or general respiratory health guidance.</p>
+          </div>
+          <div class="header-badges">
+            <span class="header-tag ai-tag"><span class="pulse-dot-sm"></span>Simulated AI</span>
+          </div>
+        </div>
+
+        <div class="chat-layout">
+          <div class="card chat-window">
+            <div class="chat-header-bar">
+              <div class="chat-agent-info">
+                <div class="agent-avatar">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/><path d="M12 16v-4M12 8h.01"/></svg>
+                </div>
+                <div>
+                  <div class="agent-name">PneumoAI Assistant</div>
+                  <div class="agent-status"><span class="pulse-dot-sm"></span> Medical Knowledge Base Active</div>
+                </div>
+              </div>
+              <button class="clear-chat-btn" id="clearChat">Clear Chat</button>
+            </div>
+
+            <div class="chat-messages" id="chatMessages">
+              <!-- Messages injected by JS -->
+            </div>
+
+            <div class="chat-input-section">
+              <div class="quick-prompts">
+                <div class="quick-label">Quick questions</div>
+                <div class="quick-btns">
+                  <button onclick="sendQuick('What is pneumonia?')">What is pneumonia?</button>
+                  <button onclick="sendQuick('What are the symptoms?')">Symptoms?</button>
+                  <button onclick="sendQuick('Is this serious?')">Is this serious?</button>
+                  <button onclick="sendQuick('What should I do?')">What should I do?</button>
+                </div>
+              </div>
+              <div class="chat-input-bar">
+                <input type="text" class="chat-input" id="chatInput" placeholder="Ask about pneumonia, symptoms, or your results…" />
+                <button class="send-btn" id="sendBtn" title="Send message">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                </button>
+              </div>
+              <p class="chat-disclaimer">⚠️ This chatbot is a simulated assistant for educational purposes only. It does not provide real medical advice.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== HISTORY PANEL ===== -->
+      <section class="panel" id="panel-history">
+        <div class="panel-header">
+          <div>
+            <div class="panel-eyebrow">// scan records</div>
+            <h1 class="panel-title">Scan <em>History</em></h1>
+            <p class="panel-sub">Review all previous X-ray analyses from this session.</p>
+          </div>
+          <div class="header-badges">
+            <button class="header-btn" id="clearHistoryBtn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+              Clear All
+            </button>
+          </div>
+        </div>
+
+        <div class="history-list" id="historyList">
+          <!-- History items injected by JS -->
+          <div class="history-empty" id="historyEmpty">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <p>No scans yet</p>
+            <p class="history-empty-sub">Complete an X-ray analysis to see results here</p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
